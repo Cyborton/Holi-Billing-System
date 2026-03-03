@@ -7,7 +7,6 @@ namespace HoliBillingApi.Data
     {
         public static async Task SeedAsync(AppDbContext context, IConfiguration configuration)
         {
-            // Ensure exactly one admin credential.
             var adminUsername = configuration["DefaultAdmin:Username"] ?? "admin";
             var adminPassword = configuration["DefaultAdmin:Password"] ?? "admin123";
 
@@ -18,7 +17,6 @@ namespace HoliBillingApi.Data
                 Password = adminPassword
             });
 
-            // Seed master catalog with Holi-specific products only.
             if (!await context.Items.AnyAsync())
             {
                 var items = new List<Item>
@@ -58,7 +56,6 @@ namespace HoliBillingApi.Data
                 context.Items.AddRange(items);
             }
 
-            // Seed customers + billing history only when billing data is empty.
             if (!await context.Customers.AnyAsync() && !await context.Bills.AnyAsync())
             {
                 var customers = new List<Customer>

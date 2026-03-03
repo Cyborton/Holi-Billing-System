@@ -17,7 +17,6 @@ namespace HoliBillingApi.Controllers
             _context = context;
         }
 
-        // GET ALL CUSTOMERS
         [HttpGet]
         public async Task<IActionResult> GetCustomers()
         {
@@ -35,7 +34,6 @@ namespace HoliBillingApi.Controllers
             return Ok(customers);
         }
 
-        // GET CUSTOMER BY ID
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCustomer(int id)
         {

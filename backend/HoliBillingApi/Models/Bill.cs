@@ -15,7 +15,6 @@ namespace HoliBillingApi.Models
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        // RELATION TO CUSTOMER
         public int CustomerId { get; set; }
         public Customer Customer { get; set; } = null!;
 
